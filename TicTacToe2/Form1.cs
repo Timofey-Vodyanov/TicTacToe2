@@ -1,3 +1,5 @@
+using System.Diagnostics.Metrics;
+
 namespace TicTacToe2
 {
     public partial class Form1 : Form
@@ -8,7 +10,6 @@ namespace TicTacToe2
             Image.FromFile("..\\..\\..\\Resources\\lol.png"),
             Image.FromFile("..\\..\\..\\Resources\\dota.png"),
         };
-
         public Form1()
         {
             InitializeComponent();
@@ -35,15 +36,18 @@ namespace TicTacToe2
             Check();
         }
 
-        private void deactivate()
+        private void resetGame()
         {
             foreach (Control X in this.Controls)
             {
-                if (X is Button)
+                if (X is Button && X != button10)
                 {
-                    ((Button)X).Enabled = false;
+                    ((Button)X).Image = null;
+                    ((Button)X).BackColor = default(Color);
                 }
             }
+            numberOfUsedSquares = 0;
+            switchMoves = 0;
         }
         private void Check()
         {
@@ -57,7 +61,7 @@ namespace TicTacToe2
                || button3.Image == images[0] && button5.Image == images[0] && button7.Image == images[0])
             {
                 MessageBox.Show("Победила League of Legends!");
-                deactivate();
+                resetGame();
             }
 
             else if (button1.Image == images[1] && button2.Image == images[1] && button3.Image == images[1]
@@ -70,16 +74,26 @@ namespace TicTacToe2
             || button3.Image == images[1] && button5.Image == images[1] && button7.Image == images[1])
             {
                 MessageBox.Show("Победила Dota 2!");
-                deactivate();
+                resetGame();
             }
             else
             {
                 if (numberOfUsedSquares == 9)
                 {
                     MessageBox.Show("НИЧЬЯ!");
-                    deactivate();
+                    resetGame();
                 }
             }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Ход: Игрок 1 (LoL)";
+            resetGame();
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -43,6 +43,7 @@ namespace TicTacToe2
             button9 = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             label1 = new Label();
+            button10 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -155,11 +156,25 @@ namespace TicTacToe2
             label1.Text = "Ход: Игрок 1 (LoL)\r\n";
             label1.Click += label1_Click;
             // 
+            // button10
+            // 
+            button10.BackColor = Color.CornflowerBlue;
+            button10.Cursor = Cursors.Hand;
+            button10.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button10.Location = new Point(91, 515);
+            button10.Name = "button10";
+            button10.Size = new Size(300, 45);
+            button10.TabIndex = 10;
+            button10.Text = "RESTART";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(482, 573);
+            Controls.Add(button10);
             Controls.Add(label1);
             Controls.Add(button9);
             Controls.Add(button8);
@@ -191,5 +206,6 @@ namespace TicTacToe2
         private Button button9;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Label label1;
+        private Button button10;
     }
 }
