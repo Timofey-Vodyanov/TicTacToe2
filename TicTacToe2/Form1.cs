@@ -3,6 +3,7 @@ namespace TicTacToe2
     public partial class Form1 : Form
     {
         int switchMoves = 0;
+        int numberOfUsedSquares = 0;
         Image[] images = {
             Image.FromFile("..\\..\\..\\Resources\\lol.png"),
             Image.FromFile("..\\..\\..\\Resources\\dota.png"),
@@ -30,6 +31,7 @@ namespace TicTacToe2
                 bt.Image = images[1];
                 label1.Text = "Ход: Игрок 1 (LoL)";
             }
+            numberOfUsedSquares++;
             Check();
         }
 
@@ -69,6 +71,14 @@ namespace TicTacToe2
             {
                 MessageBox.Show("Победила Dota 2!");
                 deactivate();
+            }
+            else
+            {
+                if (numberOfUsedSquares == 9)
+                {
+                    MessageBox.Show("НИЧЬЯ!");
+                    deactivate();
+                }
             }
         }
 
