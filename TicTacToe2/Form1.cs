@@ -16,6 +16,10 @@ namespace TicTacToe2
         private void button1_Click(object sender, EventArgs e)
         {
             Button bt = (Button)sender;
+            if (bt.Image != null)
+            {
+                return;
+            }
             if (switchMoves++ % 2 == 0)
             {
                 bt.Image = images[0];
